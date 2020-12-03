@@ -11,6 +11,7 @@ Builder.load_file('./Calc.kv')
 
 
 class MyLayout(Widget):
+    math_symbol_clicked = 0
 
     def clear(self):
         self.ids.calc_input.text = '0'
@@ -24,26 +25,41 @@ class MyLayout(Widget):
         else:
             self.ids.calc_input.text = f'{prior}{button}'
 
-    def add(self):
+    # For '<<' Button
+    def remove(self):
 
         prior = self.ids.calc_input.text
-        self.ids.calc_input.text = f'{prior}+'
+        if len(prior) == 1:
+            self.ids.calc_input.text = '0'
+        else:
+            self.ids.calc_input.text = prior[:-1]
 
-    def subtract(self):
-
-        prior = self.ids.calc_input.text
-        self.ids.calc_input.text = f'{prior}-'
-
-    def multiply(self):
-
-        prior = self.ids.calc_input.text
-        self.ids.calc_input.text = f'{prior}x'
-
-    def divide(self):
+    # For '+/-' Button
+    def pos_neg(self):
 
         prior = self.ids.calc_input.text
-        self.ids.calc_input.text = f'{prior}/'
+        if prior[0] == '-':
+            self.ids.calc_input.text = f'{prior[1:]}'
+        else:
+            self.ids.calc_input.text = f'-{prior}'
 
+    # For '.' Button
+    def dot(self):
+
+        prior = self.ids.calc_input.text
+        if '.' in prior and self.math_symbol_clicked == 0:
+            return
+        self.ids.calc_input.text = f'{prior}.'
+        self.math_symbol_clicked = 0
+
+    # For '+', '-', 'x', '/' Symbols
+    def math_sign(self, sign):
+
+        self.math_symbol_clicked = 1
+        prior = self.ids.calc_input.text
+        self.ids.calc_input.text = f'{prior}{sign}'
+
+    # For '=' Button
     def equals(self):
 
         prior = self.ids.calc_input.text
@@ -53,9 +69,17 @@ class MyLayout(Widget):
             answer = 0
 
             for num in num_list:
-                answer += int(num)
+                try:
+                    answer += int(num)
+                except Exception:
+                    answer += float(num)
 
-            self.ids.calc_input.text = str(answer)
+            try:
+                answer = int(str(answer))
+            except Exception:
+                answer = str(answer)
+
+            self.ids.calc_input.text = answer
 
 
 class CalculatorApp(App):

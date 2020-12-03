@@ -27,15 +27,16 @@
                 text: "%"
 
             MyButton:
-                text: "CE"
-
-            MyButton:
                 text: "C"
                 on_press: root.clear()
 
             MyButton:
+                text: "\u00AB"
+                on_press: root.remove()
+
+            MyButton:
                 text: "/"
-                on_press: root.divide()
+                on_press: root.math_sign("/")
 
             # Row2
             MyDarkButton:
@@ -52,7 +53,7 @@
 
             MyButton:
                 text: "x"
-                on_press: root.multiply()
+                on_press: root.math_sign("x")
 
             # Row3
             MyDarkButton:
@@ -69,7 +70,7 @@
 
             MyButton:
                 text: "-"
-                on_press: root.subtract()
+                on_press: root.math_sign("-")
 
             # Row4
             MyDarkButton:
@@ -86,11 +87,12 @@
 
             MyButton:
                 text: "+"
-                on_press: root.add()
+                on_press: root.math_sign("+")
 
             # Row5
             MyDarkButton:
                 text: "+/-"
+                on_press: root.pos_neg()
 
             MyDarkButton:
                 text: "0"
@@ -98,6 +100,7 @@
 
             MyDarkButton:
                 text: "."
+                on_press: root.dot()
 
             MyButton:
                 text: "="
