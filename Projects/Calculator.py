@@ -20,6 +20,9 @@ class MyLayout(Widget):
 
         prior = self.ids.calc_input.text
 
+        if "Error!" in prior:
+            prior = ''
+
         if prior == '0':
             self.ids.calc_input.text = f'{button}'
         else:
@@ -38,6 +41,8 @@ class MyLayout(Widget):
     def pos_neg(self):
 
         prior = self.ids.calc_input.text
+        if prior == '0':
+            return
         if prior[0] == '-':
             self.ids.calc_input.text = f'{prior[1:]}'
         else:
@@ -57,29 +62,24 @@ class MyLayout(Widget):
 
         self.math_symbol_clicked = 1
         prior = self.ids.calc_input.text
+
+        if "Error!" in prior:
+            self.ids.calc_input.text = '0'
+            return
+
         self.ids.calc_input.text = f'{prior}{sign}'
 
     # For '=' Button
     def equals(self):
 
         prior = self.ids.calc_input.text
+        try:
+            # Evaluate the output
+            answer = eval(prior)
+        except Exception:
+            answer = "Error!"
 
-        if "+" in prior:
-            num_list = prior.split("+")
-            answer = 0
-
-            for num in num_list:
-                try:
-                    answer += int(num)
-                except Exception:
-                    answer += float(num)
-
-            try:
-                answer = int(str(answer))
-            except Exception:
-                answer = str(answer)
-
-            self.ids.calc_input.text = answer
+        self.ids.calc_input.text = str(answer)
 
 
 class CalculatorApp(App):
