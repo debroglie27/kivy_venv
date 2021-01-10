@@ -2,8 +2,9 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
+from kivy.core.window import Window
 
-Builder.load_file('../Design_Files/boxlayout.kv')
+Builder.load_file('../Design_Files/round_buttons.kv')
 
 
 # Main Grid
@@ -14,6 +15,7 @@ class MyLayout(Widget):
 class AwesomeApp(App):
 
     def build(self):
+        Window.clearcolor = (1, 1, 1, 1)
         return MyLayout()
 
 

@@ -5,18 +5,18 @@ from kivy.app import App
 # from kivy.uix.textinput import TextInput
 # from kivy.uix.button import Button
 from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty
+# from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 
-Builder.load_file('../Kivy_Design_Files/new.kv')
+Builder.load_file('../Design_Files/new.kv')
 
 
 # Main Grid
 class MainGridLayout(Widget):
 
-    name = ObjectProperty(None)
-    pizza = ObjectProperty(None)
-    colour = ObjectProperty(None)
+    # name = ObjectProperty(None)
+    # pizza = ObjectProperty(None)
+    # colour = ObjectProperty(None)
 
     def press(self):
         name = self.name.text

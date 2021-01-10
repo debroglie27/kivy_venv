@@ -5,7 +5,7 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 # from kivy.uix.image import Image
 
-Builder.load_file('../Kivy_Design_Files/image.kv')
+Builder.load_file('../Design_Files/image.kv')
 
 
 # Main Grid

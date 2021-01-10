@@ -4,7 +4,7 @@ from kivy.uix.widget import Widget
 from kivy.lang import Builder
 from kivy.core.window import Window
 
-Builder.load_file('../Kivy_Design_Files/bg.kv')
+Builder.load_file('../Design_Files/bg.kv')
 
 
 # Main Grid

@@ -3,7 +3,7 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
 
-Builder.load_file('../Kivy_Design_Files/inherit.kv')
+Builder.load_file('../Design_Files/inherit.kv')
 
 
 # Main Grid

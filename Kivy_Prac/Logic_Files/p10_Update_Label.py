@@ -3,7 +3,7 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
 
-Builder.load_file('../Kivy_Design_Files/update_label.kv')
+Builder.load_file('../Design_Files/update_label.kv')
 
 
 # Main Grid
@@ -18,6 +18,7 @@ class MyLayout(Widget):
 
         # Clear the TextInput Box
         self.ids.name_input.text = ""
+
 
 class AwesomeApp(App):
 
